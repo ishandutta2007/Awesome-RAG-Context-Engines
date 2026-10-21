@@ -1,85 +1,183 @@
-# Awesome-RAG-Context-Engines
+<p align="center">
+  <img src="assets/banner.svg" alt="Awesome RAG &amp; Context Engines Banner" width="100%" />
+</p>
 
-## Top RAG & Context Engines Ecosystem
+# ⚡ Awesome RAG &amp; Context Engines 🧠🔍
 
-**Curated List of SaaS Products & Open-Source GitHub Projects**  
-*Focused on Deep Document Understanding, Layout-Aware Parsing & Grounded Generation*  
-**Last updated: March 2026**
+<p align="center">
+  <a href="https://github.com/ishandutta2007/Awesome-Awesome-Awesome"><img src="https://img.shields.io/badge/Awesome-%E2%9C%94-blueviolet?style=flat-square&logo=github" alt="Awesome"/></a><a href="https://discord.gg/jc4xtF58Ve"><img src="https://img.shields.io/badge/Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white" alt="Discord" /></a> <a href="https://github.com/ishandutta2007/Awesome-RAG-Context-Engines/stargazers"><img src="https://img.shields.io/github/stars/ishandutta2007/Awesome-RAG-Context-Engines?style=flat-square&color=yellow" alt="Stars" /></a> <a href="https://github.com/ishandutta2007/Awesome-RAG-Context-Engines/network/members"><img src="https://img.shields.io/github/forks/ishandutta2007/Awesome-RAG-Context-Engines?style=flat-square&color=blue" alt="Forks" /></a> <a href="https://github.com/ishandutta2007/Awesome-RAG-Context-Engines/blob/main/LICENSE"><img src="https://img.shields.io/badge/License-MIT-green.svg?style=flat-square" alt="License" /></a> <a href="https://github.com/ishandutta2007/Awesome-RAG-Context-Engines/pulls"><img src="https://img.shields.io/badge/PRs-Welcome-brightgreen.svg?style=flat-square" alt="PRs Welcome" /></a> <a href="https://github.com/ishandutta2007"><img alt="GitHub followers" src="https://img.shields.io/github/followers/ishandutta2007?label=Follow" /></a>
+</p>
 
-This repository tracks notable **SaaS platforms** and **open-source projects** for **RAG & Context Engines**. These tools provide the retrieval and context layer between your documents and an LLM — handling parsing, chunking, embedding, indexing, and retrieval so the model receives high-fidelity evidence rather than noisy text.
+A curated directory and architectural guide dedicated to **Retrieval-Augmented Generation (RAG)**, **Context Engines**, **Vector Databases**, and **Vision-Native Document Intelligence Systems**. 
 
-**Examples** include RAGFlow, Vectara, Pinecone Nexus, Weaviate, Qdrant, Chroma, Elasticsearch Vector Database, Zilliz, Marqo, and SciPhi R2R (the category leaders).
-
-**Open-source emphasis**: This section is heavily expanded with every major active project for self-hosting, vision-native document parsing, and transparent retrieval — ideal for teams prioritizing data sovereignty, avoiding vendor lock-in, and building context engines they can audit and control.
-
-Contributions welcome! Open a PR to add/update entries. Keep descriptions factual and link to official sites.
-
-## Table of Contents
-- [SaaS/Hosted Platforms](#saas-hosted-platforms)
-- [Open-Source GitHub Projects](#open-source-github-projects)
-- [How to Contribute](#how-to-contribute)
-- [Disclaimer](#disclaimer)
-
-## SaaS/Hosted Platforms
-
-- **[Vectara](https://www.vectara.com/)**  
-  **RAG-as-a-Service through a single API.** Handles document ingestion, chunking, embedding, retrieval, reranking, and generation with built-in hallucination detection and citation extraction [citation:15]. **Deployment options include SaaS, VPC, and on-premise** for data sovereignty [citation:15]. Founded by former Google executives with deep search and ML expertise [citation:15]. **Limitations**: credit-based pricing requires usage tracking; proprietary vector database may limit portability [citation:15].
-
-- **[Pinecone Nexus](https://www.pinecone.io/)**  
-  **The retrieval-native RAG platform from the managed vector database leader.** Distills sources into **curated artifacts** — summaries, topics, entities, events — that are pre-computed and easy to retrieve [citation:4]. At query time, the model **writes Python against a retrieval SDK** to read artifacts, run semantic and keyword search, walk relationship graphs, and query structured tables [citation:4]. **Only distilled evidence enters the prompt**, keeping context small and every claim traceable [citation:4]. **Handles exact counts and enumerations** via SQL over typed artifact tables [citation:4]. **Best for large, messy corpora** where answer quality matters more than ingestion speed.
-
-- **[Weaviate Cloud](https://weaviate.io/)**  
-  **Managed vector database with a turnkey RAG path.** **Query Agent** handles ingest, chunk, retrieve, and answer on Weaviate Cloud [citation:5]. For full control, use `col.query.hybrid(...)` to combine vector and BM25 retrieval with filters, then send results to any LLM [citation:5]. **Free to start across the entire product suite** as of June 2026 [citation:5].
-
-- **[Elasticsearch Vector Database](https://www.elastic.co/)**  
-  **Serverless vector search for RAG and agents, built on the platform where your data already lives.** **`vectordb_document` index mode** is on by default with **bfloat16 storage** (half the disk footprint of float32), excluded source vectors, and parallel merging [citation:9]. **Better Binary Quantization (BBQ)** shrinks vector memory footprints by up to 32x while preserving recall [citation:9]. **Auto-calibration** tunes quantization per segment and retunes on merge — QPS improved by an average of **16.7%** across 18 datasets [citation:9]. **Managed GPU inference** via Elastic Inference Service with native Jina AI embedding and reranking models [citation:9].
-
-- **[SciPhi R2R](https://www.sciphi.ai/)**  
-  **Enterprise-grade RAG infrastructure with agentic RAG, ingestion, and document management.** **HybridRAG combines knowledge graphs and vector retrieval** for context-rich responses; claims **150% improved accuracy** [citation:11]. **Universal document processing across 40+ formats**; **granular permissions down to document level** [citation:11]. **R2R** is the open-source core — available as a self-hostable API server.
-
-## Open-Source GitHub Projects
-
-- **[RAGFlow](https://github.com/infiniflow/ragflow)**  
-  **The leading open-source RAG engine with deep document understanding** — Apache 2.0 licensed, **133,000+ GitHub stars** [citation:14]. **DeepDoc vision-native layout parsing** uses YOLOv8-based layout detection to segment documents before OCR — preserving column/row coordinate mappings for tables and auto-rotating scanned tables [citation:1]. **Template-based chunking** (Law, Manual, Book, Paper, Resume, Table) matches parsing strategy to document semantics [citation:13]. **Hybrid retrieval** (BM25 + dense vector RRF) with **pixel-exact bounding box citations** linking answers to specific visual regions [citation:1]. **Graph RAG support** for capturing relationships across documents [citation:13]. **Native integration** with frontier models including Claude, GPT, Gemini, DeepSeek, Gemma, and Qwen [citation:1]. **April 2026 release** added prebuilt ingestion pipelines, sandbox code execution, and chart generation [citation:1]. **Trade-offs**: **high resource requirements** — 16GB+ RAM and GPU recommended for production parsing latency below 2 seconds per page [citation:1][citation:13]. **Best for legal, financial, healthcare, and technical document Q&A** where table extraction and citation-grade answers matter [citation:1][citation:13].
-
-- **[Qdrant](https://github.com/qdrant/qdrant)**  
-  **The leading open-source vector database for filter-heavy RAG workloads.** **Native hybrid search** — dense vector plus BM25 sparse via **RRF fusion** using Qdrant's built-in fastembed integration [citation:6]. **`QdrantRAG`** provides a complete RAG interface with `add_directory`, hybrid/vector/BM25 search modes, and configurable chunking [citation:6]. **Sub-millisecond query latency** with optional GPU acceleration.
-
-- **[Chroma](https://github.com/chroma-core/chroma)**  
-  **The lightweight, developer-friendly vector database for RAG prototyping** — Apache 2.0 licensed [citation:7]. **`pip install chromadb`** and you're running locally in seconds; **persistent storage** avoids data loss without manual index or cluster configuration [citation:7]. **Four-function core API**: create collection, add documents, query, and get by ID [citation:7]. **Chroma Cloud** powers serverless vector, hybrid, and full-text search with **$5 free credits** to start [citation:7]. **Best for beginners and mid-scale RAG** — migrate to Qdrant or Milvus beyond single-machine capacity.
-
-- **[Zilliz / Milvus](https://github.com/milvus-io/milvus)**  
-  **The open-source distributed vector database for billion-scale workloads.** **Zilliz Cloud** is the fully managed service with enterprise-grade performance and scalability [citation:8]. **Vectorize integration** automates RAG pipelines — connecting data sources, selecting embedding models, and keeping vector indexes updated as source data evolves [citation:8]. **Best for teams needing managed Milvus** with automated pipeline maintenance.
-
-- **[Marqo](https://github.com/marqo-ai/marqo)**  
-  **AI-native search and product discovery platform.** **Hybrid search** combining lexical and neural retrieval; **typeahead search** for intelligent query suggestions from partial input [citation:10]. **Base64 image embedding caching** cuts vectorization time from ~10ms to ~1ms for reused images [citation:10]. **Best for e-commerce and domain-specific applications** where catalog-specific intelligence improves relevance.
-
-### Additional Strong Open-Source Options
-
-- **LlamaIndex** — Purpose-built data framework for RAG with 160+ connectors, indexing strategies, and query engines.
-- **Haystack** — Typed, explicit-component framework for production RAG with auditable DAG pipelines.
-- **Kotaemon** — Local-first RAG UI with visual citations and multi-vector retrieval.
-- **Verba** — Weaviate's open-source RAG application with sensible defaults for quick starts.
-- **R2R (self-hosted)** — SciPhi's open-source agentic RAG core with hybrid search and knowledge graphs [citation:11].
-
-**Frameworks for building custom systems**: Combine **RAGFlow** for vision-native document parsing with pixel-exact citations, **Qdrant** for filter-heavy hybrid retrieval, **Chroma** for rapid prototyping, **Elasticsearch Vector Database** for serverless vector search on existing Elastic infrastructure, and **Pinecone Nexus** for curated-artifact retrieval with exact counts — to build a context engine tailored to your document complexity, citation requirements, and infrastructure constraints.
-
-## How to Contribute
-
-1. Fork the repo.
-2. Add/edit entries in `README.md` (follow existing format).
-3. Include: name, link, 1–2 sentence description, and whether it's SaaS or open-source.
-4. Submit PR with a short explanation.
-
-Star the repo if you find it useful!
-
-## Disclaimer
-
-- This is a **community-curated** list — not exhaustive and not an endorsement.
-- RAG and context engines differ significantly in document parsing quality, retrieval approach, and infrastructure requirements. **RAGFlow's DeepDoc vision parsing has the best document understanding in the OSS RAG space** but requires 16GB+ RAM and GPU for production latency [citation:1][citation:13]. **Pinecone Nexus replaces chunk retrieval with curated artifacts and code-based evidence gathering** — solving exact counts and traceability [citation:4]. **Chroma is for prototyping** — migrate beyond single-machine capacity [citation:7]. **Vector search returns semantically similar content, not necessarily relevant content** — document structure and retrieval strategy matter as much as the embedding model.
-- Self-hosted open-source solutions require proper document parsing configuration, embedding model selection, and retrieval quality evaluation against your specific document corpus.
+These platforms form the mission-critical context layer bridging raw enterprise knowledge (complex PDFs, tables, knowledge graphs, codebases) with Large Language Models (LLMs) — delivering deterministic parsing, hybrid retrieval (dense vector + sparse BM25), reranking, and citation-grade grounded responses without hallucinations.
 
 ---
 
-**Made for AI engineers, RAG developers, and teams building document intelligence and context systems.**
-Let's make RAG and context engines more open, traceable, and document-aware.
+## 📑 Table of Contents
+- [📊 Sector Overview &amp; Market Dynamics](#-sector-overview--market-dynamics)
+- [☁️ SaaS &amp; Hosted RAG Platforms](#️-saas--hosted-rag-platforms)
+- [🔓 Open-Source RAG &amp; Context Engines](#-open-source-rag--context-engines)
+- [📐 Core Architectural Criteria](#-core-architectural-criteria)
+- [🤝 How to Contribute](#-how-to-contribute)
+- [💖 Support &amp; Sponsorship](#-support--sponsorship)
+- [📈 Star History](#-star-history)
+- [⚖️ Disclaimer &amp; License](#️-disclaimer--license)
+
+---
+
+## 📊 Sector Overview &amp; Market Dynamics
+
+The global market for **Retrieval-Augmented Generation (RAG) and Context Engine Infrastructure** is estimated at approximately **$2.1 billion in 2025** and is projected to expand beyond **$12.8 billion by 2030**, exhibiting an accelerated CAGR of ~43% as enterprise AI initiatives shift from experimental conversational chatbots to regulated, zero-hallucination document intelligence workflows.
+
+The sector demonstrates **moderate fragmentation**: while established search infrastructure powerhouses and premier vector databases (such as Elastic, Pinecone, Milvus/Zilliz, and Qdrant) command significant enterprise data volumes, the rapid commoditization of baseline approximate nearest neighbor (ANN) vector indexing prevents a winner-take-all monopoly. Value and competitive moats have decisively migrated up the stack toward specialized context layers: layout-aware vision parsing (OCR segmentation), hybrid multi-vector &amp; knowledge graph retrieval (Graph RAG), and pre-computed curated artifact graphs that ensure exact auditability and deterministic precision.
+
+---
+
+## ☁️ SaaS &amp; Hosted RAG Platforms
+
+The following hosted platforms provide turnkey RAG-as-a-Service, managed serverless vector databases, and enterprise document context pipelines. Entries are sorted descending by **Company Scale (Valuation / Market Capitalization / Revenue)**.
+
+| 🏢 Platform / Product | 💡 Description &amp; Core Context Capabilities | 📈 Company Scale (Valuation / Revenue) | 🏷️ Starting Paid Tier | 🎁 Free Tier &amp; Trial Limits | 🌐 Deployment / Access |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| **[Elasticsearch Vector Database](https://www.elastic.co/)** | Serverless vector and lexical search with BBQ (Better Binary Quantization, up to 32x memory compression), auto-calibrated segment merging, bfloat16 storage, and GPU-managed inference via Elastic Inference Service. | **Public (NYSE: ESTC)**<br>~$8.5B Market Cap<br>~$1.3B ARR | **$95.00 / month**<br>(Standard tier baseline compute &amp; storage) | **14-day free trial** with up to 8 GB RAM and 240 GB storage cluster on AWS, GCP, or Azure (full access to ML &amp; vector search). | Managed Cloud (AWS, Azure, GCP) &amp; Self-managed ELv2 |
+| **[Pinecone Nexus](https://www.pinecone.io/)** | Retrieval-native managed context engine using pre-computed curated artifacts (summaries, entities, events) queried via a Python retrieval SDK. Executes deterministic counting and table queries via SQL. | **Series B**<br>~$750M Valuation<br>($138M raised) | **$20.00 / month**<br>(Builder tier base fee; Standard from $50/mo minimum commit) | **Free forever (Starter plan)**: up to 2 GB index storage (~300,000 vectors), 2M write units/mo, 1M read units/mo, and 5 serverless indexes. | Managed Serverless Cloud (AWS, GCP, Azure) |
+| **[Zilliz Cloud](https://zilliz.com/)** | Fully managed enterprise service for distributed Milvus vector databases, offering automated Vectorize ETL ingestion pipelines, deep multi-tenancy, and hardware-accelerated HNSW/GPU index scaling. | **Series B**<br>~$600M Valuation<br>($113M raised) | **$0.27 / CU-hour**<br>(~$25–$30/mo light usage; Dedicated clusters from $197/mo) | **Free forever**: 5 GB storage (~1M 768-dim vectors), 2.5M vCUs (or 100 CU-hours)/mo, and up to 5 collections; plus **30-day $100 credit trial** for dedicated clusters. | Managed Serverless &amp; Dedicated (AWS, GCP, Azure) |
+| **[Weaviate Cloud](https://weaviate.io/)** | Managed AI-native vector search engine with turnkey Query Agent, hybrid BM25 + dense search via RRF fusion, multi-tenant isolation, and automated chunking and ingestion pipelines. | **Series B**<br>~$200M Valuation<br>($67M raised) | **$45.00 / month**<br>(Flex Plan with 99.5% uptime SLA and RBAC) | **Free forever (Always Free Cluster)**: 1 cluster, up to 100,000 objects, 1 GB RAM, 10 GB disk, 1 collection (3 tenants), 2,000 embedding reqs/day, and 1,000 Query Agent reqs/mo. | Managed Serverless &amp; Hybrid Cloud (AWS, GCP, Azure) |
+| **[Vectara](https://www.vectara.com/)** | End-to-end RAG-as-a-Service API platform featuring Boomerang neural embeddings, automated chunking, HHEM hallucination detection, and grounded citation generation. | **Series A**<br>~$180M Valuation<br>($28.5M raised) | **$100,000 / year**<br>(Enterprise SaaS deployment; VPC deployment from $250k/yr) | **30-day free trial**: includes 10,000 free platform credits for search operations, document parsing, and generative workflows (no credit card required). | SaaS, Dedicated VPC, &amp; On-Premise Air-gapped |
+| **[LlamaCloud](https://cloud.llamaindex.ai/)** | Managed context extraction and indexing platform powered by LlamaParse. Excels at parsing layout-dense PDFs, complex embedded tables, and visual charts into LLM-ready context chunks. | **Series A**<br>~$100M Valuation<br>($8.5M+ raised) | **$50.00 / month**<br>(Starter tier with 50,000 credits/mo and up to $500/mo overage cap) | **Free forever**: 10,000 free parsing/extraction credits per month, 5 concurrent parse/extract/classify jobs, and community support. | Managed Serverless API |
+| **[Unstructured Cloud](https://unstructured.io/)** | Serverless document transformation API turning raw PDFs, DOCX, PPTX, and HTML into structured, layout-preserved, and model-ingestible context chunks for vector databases. | **Series B**<br>~$100M Valuation<br>($65M raised) | **$0.015 / page**<br>(Pay-as-you-go serverless API overage rate) | **Free trial credit**: 10,000 free processed document pages upon initial signup (one-time developer credit, no credit card required). | Managed API &amp; VPC Marketplace (AWS/Azure) |
+| **[Chroma Cloud](https://trychroma.com/)** | Managed serverless vector database designed for high-velocity AI prototyping, featuring multi-database isolation, hybrid search, and low-latency vector indexing. | **Seed**<br>~$75M Valuation<br>($18M raised) | **$0.33 / GiB-mo storage**<br>+ $2.50 / GiB written (Pay-as-you-go, no base fee) | **Free Starter Plan**: includes $5.00 in free usage credits upon signup, up to 10 databases, and up to 10 team member seats. | Serverless Managed Cloud |
+
+---
+
+## 🔓 Open-Source RAG &amp; Context Engines
+
+A comprehensive collection of active open-source projects for self-hosted RAG, context synthesis, document parsing, and vector infrastructure. 
+
+Repositories are sorted descending by **GitHub Star Count** ⭐.
+
+1. **[Dify](https://github.com/langgenius/dify)** [![GitHub stars](https://img.shields.io/github/stars/langgenius/dify?style=social&color=white)](https://github.com/langgenius/dify/stargazers)  
+   **Production-grade LLM application and RAG workflow engine.** Combines visual prompt engineering, flexible context pipelines, dataset management, multi-model routing, and hybrid vector/full-text retrieval for scalable generative AI systems.
+
+2. **[LangChain](https://github.com/langchain-ai/langchain)** [![GitHub stars](https://img.shields.io/github/stars/langchain-ai/langchain?style=social&color=white)](https://github.com/langchain-ai/langchain/stargazers)  
+   **The universal framework for context-aware LLM agents and multi-retriever chaining.** Delivers hundreds of document loaders, vector store integrations, contextual memory abstractions, and modular retrieval-augmented generation DAGs.
+
+3. **[RAGFlow](https://github.com/infiniflow/ragflow)** [![GitHub stars](https://img.shields.io/github/stars/infiniflow/ragflow?style=social&color=white)](https://github.com/infiniflow/ragflow/stargazers)  
+   **Leading open-source RAG engine with vision-native layout parsing (DeepDoc).** Uses YOLOv8-based layout detection to segment documents prior to OCR, preserving table coordinates, generating pixel-exact bounding box citations, and executing hybrid BM25 + dense vector retrieval.
+
+4. **[Mem0](https://github.com/mem0ai/mem0)** [![GitHub stars](https://img.shields.io/github/stars/mem0ai/mem0?style=social&color=white)](https://github.com/mem0ai/mem0/stargazers)  
+   **Self-improving personalized memory and context layer for AI assistants and autonomous agents.** Enables continuous context retention, long-horizon user modeling, and adaptive semantic retrieval across diverse agent sessions.
+
+5. **[AnythingLLM](https://github.com/Mintplex-Labs/anything-llm)** [![GitHub stars](https://img.shields.io/github/stars/Mintplex-Labs/anything-llm?style=social&color=white)](https://github.com/Mintplex-Labs/anything-llm/stargazers)  
+   **All-in-one local-first desktop and enterprise RAG application.** Supports zero-setup document embedding, multi-user workspace management, agent tools, and full privacy-preserving execution with local models (Ollama, LM Studio).
+
+6. **[LlamaIndex](https://github.com/run-llama/llama_index)** [![GitHub stars](https://img.shields.io/github/stars/run-llama/llama_index?style=social&color=white)](https://github.com/run-llama/llama_index/stargazers)  
+   **Specialized data framework for RAG and context pipelines.** Features 160+ enterprise connectors, advanced chunking strategies, hierarchical indexing, knowledge graphs, and agentic query engines for deep document reasoning.
+
+7. **[Milvus](https://github.com/milvus-io/milvus)** [![GitHub stars](https://img.shields.io/github/stars/milvus-io/milvus?style=social&color=white)](https://github.com/milvus-io/milvus/stargazers)  
+   **Distributed, cloud-native open-source vector database built for billion-scale similarity search.** Delivers hardware-accelerated indexing (GPU/HNSW/SCaNN), multi-tenancy, and high-throughput real-time streaming RAG.
+
+8. **[LightRAG](https://github.com/HKUDS/LightRAG)** [![GitHub stars](https://img.shields.io/github/stars/HKUDS/LightRAG?style=social&color=white)](https://github.com/HKUDS/LightRAG/stargazers)  
+   **Fast and lightweight dual-level retrieval-augmented generation engine.** Seamlessly fuses graph-based entity relationships with vector search to achieve rapid topic discovery, low latency, and comprehensive multi-hop reasoning.
+
+9. **[Qdrant](https://github.com/qdrant/qdrant)** [![GitHub stars](https://img.shields.io/github/stars/qdrant/qdrant?style=social&color=white)](https://github.com/qdrant/qdrant/stargazers)  
+   **High-performance Rust vector search engine built for filter-heavy RAG workloads.** Provides native hybrid search (dense vectors + BM25 sparse) via Reciprocal Rank Fusion (RRF), fastembed integration, and the `QdrantRAG` abstraction.
+
+10. **[Chroma](https://github.com/chroma-core/chroma)** [![GitHub stars](https://img.shields.io/github/stars/chroma-core/chroma?style=social&color=white)](https://github.com/chroma-core/chroma/stargazers)  
+    **Lightweight, developer-centric embedding database for rapid RAG prototyping.** Offers a clean four-function API (`create_collection`, `add`, `query`, `get`), local zero-config persistence, and native Python and TypeScript SDKs.
+
+11. **[Haystack](https://github.com/deepset-ai/haystack)** [![GitHub stars](https://img.shields.io/github/stars/deepset-ai/haystack?style=social&color=white)](https://github.com/deepset-ai/haystack/stargazers)  
+    **Production-ready modular orchestration framework for RAG and search pipelines by deepset.** Features explicit typed DAG pipelines, custom evaluators, and flexible document processing integrations.
+
+12. **[Kotaemon](https://github.com/Cinnamon/kotaemon)** [![GitHub stars](https://img.shields.io/github/stars/Cinnamon/kotaemon?style=social&color=white)](https://github.com/Cinnamon/kotaemon/stargazers)  
+    **Open-source, clean UI-driven RAG framework for complex document QA.** Features interactive visual citations, bounding-box PDF previews, multi-vector indexing, and hybrid local/cloud model execution.
+
+13. **[Weaviate](https://github.com/weaviate/weaviate)** [![GitHub stars](https://img.shields.io/github/stars/weaviate/weaviate?style=social&color=white)](https://github.com/weaviate/weaviate/stargazers)  
+    **Open-source vector database supporting multi-modal embeddings, vector search, and hybrid BM25 retrieval.** Features modular vectorizers, multi-tenant partitioning, and native GraphQL/REST interfaces.
+
+14. **[R2R](https://github.com/SciPhi-AI/R2R)** [![GitHub stars](https://img.shields.io/github/stars/SciPhi-AI/R2R?style=social&color=white)](https://github.com/SciPhi-AI/R2R/stargazers)  
+    **State-of-the-art open-source agentic RAG engine with automated hybrid graph-vector retrieval.** Handles universal document processing across 40+ file formats, granular RBAC permissions, and real-time observability telemetry.
+
+15. **[Verba](https://github.com/weaviate/Verba)** [![GitHub stars](https://img.shields.io/github/stars/weaviate/Verba?style=social&color=white)](https://github.com/weaviate/Verba/stargazers)  
+    **Turnkey personal RAG assistant powered by Weaviate.** Provides a responsive web interface for uploading files, configuring semantic chunking algorithms, and exploring document context locally.
+
+16. **[Marqo](https://github.com/marqo-ai/marqo)** [![GitHub stars](https://img.shields.io/github/stars/marqo-ai/marqo?style=social&color=white)](https://github.com/marqo-ai/marqo/stargazers)  
+    **AI-native search engine designed for multimodal retrieval and product discovery.** Combines tensor search with lexical scoring, image embedding caching, and sub-millisecond query execution.
+
+---
+
+## 📐 Core Architectural Criteria
+
+When evaluating or building a **RAG &amp; Context Engine** stack, consider these four core architectural pillars:
+
+```
+┌────────────────────────────────────────────────────────────────────────┐
+│                   RAG & CONTEXT PIPELINE FLOW                          │
+│                                                                        │
+│   [Raw Unstructured Docs]  ──>  [Layout-Aware Parser / OCR]            │
+│                                            │                           │
+│                                            ▼                           │
+│   [Curated Artifacts / Graph] <──  [Hybrid Chunking & Embedding]       │
+│                │                                   │                   │
+│                ▼                                   ▼                   │
+│   [Deterministic Graph Query]       [Dense + BM25 Sparse Search]       │
+│                │                                   │                   │
+│                └───────────────┬───────────────────┘                   │
+│                                ▼                                       │
+│                     [Cross-Encoder Reranker]                           │
+│                                │                                       │
+│                                ▼                                       │
+│                [Grounded LLM Context Window]                           │
+│                                │                                       │
+│                                ▼                                       │
+│            [Pixel-Exact Citations & Verification]                      │
+└────────────────────────────────────────────────────────────────────────┘
+```
+
+1. **Document Understanding &amp; Layout Awareness**: Plain-text extractors fail on tables, multi-column articles, and charts. Engines like **RAGFlow (DeepDoc)** and **LlamaParse** preserve 2D coordinates and table bounding boxes.
+2. **Hybrid Retrieval (Dense + Sparse)**: Pure vector search struggles with acronyms, part numbers, and exact IDs. Combining dense embeddings with BM25 via **Reciprocal Rank Fusion (RRF)** (as in Qdrant, Weaviate, Elastic) ensures high recall.
+3. **Curated Artifacts vs. Raw Chunks**: Pushing hundreds of raw text chunks into prompt windows degrades LLM reasoning. Platforms like **Pinecone Nexus** summarize knowledge into typed artifacts queried via code/SQL.
+4. **Citation Grounding &amp; Hallucination Prevention**: Mission-critical enterprise RAG demands direct verification. Tools like **Vectara (HHEM)** and **RAGFlow** provide visual pixel-exact bounding boxes linking claims back to original sources.
+
+---
+
+## 🤝 How to Contribute
+
+Contributions from the AI and developer community are warmly welcome!
+
+1. **Fork the repository** to your GitHub account.
+2. **Create a descriptive feature branch**: `git checkout -b add-my-rag-project`.
+3. **Add or update the entry** in `README.md`:
+   - Follow the established table or list format.
+   - For SaaS products: include exact starting price, specific free tier limits, and verifiable company scale.
+   - For open-source repos: include repo link, description, and the social star badge format.
+4. **Submit a Pull Request** with a succinct explanation of the addition and relevant documentation links.
+
+---
+
+## 💖 Support &amp; Sponsorship
+
+Thank you for exploring and utilizing **Awesome-RAG-Context-Engines**! 🚀
+
+If this repository helps you navigate the rapidly evolving retrieval and context architecture ecosystem, please consider supporting the project:
+
+- ⭐ **Star this repository** to improve visibility and help other AI developers discover it.
+- 🍴 **Fork the repo** to benchmark your own custom context engines.
+- 📢 **Share with colleagues** and AI engineering communities on Twitter/X, LinkedIn, and Discord.
+- ☕ **Sponsor or buy a coffee** to support ongoing research and curated maintenance:  
+  👉 **[Support on GitHub Sponsors](https://github.com/sponsors/ishandutta2007)** 💖
+
+---
+
+## 📈 Star History
+
+[![Star History Chart](https://star-history.dera.page/svg?repos=ishandutta2007/Awesome-RAG-Context-Engines&type=date&legend=top-left)](https://star-history.dera.page/#ishandutta2007/Awesome-RAG-Context-Engines&type=date&legend=top-left)
+
+---
+
+## ⚖️ Disclaimer &amp; License
+
+- This list is **community-curated** for educational, engineering, and research purposes. Product names and trademarks belong to their respective owners.
+- Distributed under the **[MIT License](LICENSE)**.
+- Made with ❤️ for AI engineers, RAG practitioners, and teams building next-generation grounded context intelligence.

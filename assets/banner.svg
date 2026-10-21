@@ -1,0 +1,193 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 420" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradients -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#070a13" />
+      <stop offset="50%" stop-color="#0d1322" />
+      <stop offset="100%" stop-color="#080c16" />
+    </linearGradient>
+
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38bdf8" />
+      <stop offset="50%" stop-color="#818cf8" />
+      <stop offset="100%" stop-color="#c084fc" />
+    </linearGradient>
+
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" stop-opacity="0.75" />
+      <stop offset="100%" stop-color="#0f172a" stop-opacity="0.85" />
+    </linearGradient>
+
+    <linearGradient id="glowCyan" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#06b6d4" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#3b82f6" stop-opacity="0" />
+    </linearGradient>
+
+    <linearGradient id="glowPurple" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#a855f7" stop-opacity="0.7" />
+      <stop offset="100%" stop-color="#6366f1" stop-opacity="0" />
+    </linearGradient>
+
+    <!-- Filters for Glow Effects -->
+    <filter id="blurGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="60" />
+    </filter>
+
+    <filter id="subtleShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#000000" flood-opacity="0.6" />
+    </filter>
+
+    <style>
+      @keyframes pulseGlow {
+        0%, 100% { opacity: 0.35; transform: scale(1); }
+        50% { opacity: 0.65; transform: scale(1.12); }
+      }
+      @keyframes flowStream {
+        0% { stroke-dashoffset: 120; }
+        100% { stroke-dashoffset: 0; }
+      }
+      @keyframes floatOrb {
+        0%, 100% { transform: translateY(0px) translateX(0px); }
+        50% { transform: translateY(-15px) translateX(10px); }
+      }
+      @keyframes shimmerBorder {
+        0%, 100% { stroke-opacity: 0.3; }
+        50% { stroke-opacity: 0.8; }
+      }
+      .anim-glow-1 {
+        transform-origin: 250px 180px;
+        animation: pulseGlow 8s ease-in-out infinite;
+      }
+      .anim-glow-2 {
+        transform-origin: 950px 220px;
+        animation: pulseGlow 10s ease-in-out infinite alternate;
+      }
+      .anim-flow {
+        stroke-dasharray: 8 16;
+        animation: flowStream 4s linear infinite;
+      }
+      .anim-float {
+        animation: floatOrb 6s ease-in-out infinite;
+      }
+      .border-shimmer {
+        animation: shimmerBorder 5s ease-in-out infinite;
+      }
+      .banner-title {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+        font-weight: 800;
+        font-size: 52px;
+        fill: #ffffff;
+        letter-spacing: -1.2px;
+      }
+      .banner-subtitle {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+        font-weight: 400;
+        font-size: 20px;
+        fill: #94a3b8;
+      }
+      .banner-badge {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+        font-weight: 700;
+        font-size: 13px;
+        fill: #38bdf8;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+      }
+      .tag-text {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+        font-weight: 600;
+        font-size: 13px;
+        fill: #cbd5e1;
+      }
+    </style>
+  </defs>
+
+  <!-- Canvas Background -->
+  <rect width="1200" height="420" rx="16" fill="url(#bgGrad)" />
+
+  <!-- Background Animated Glowing Aurora Blurs -->
+  <g filter="url(#blurGlow)">
+    <circle class="anim-glow-1" cx="240" cy="160" r="150" fill="url(#glowCyan)" />
+    <circle class="anim-glow-2" cx="960" cy="240" r="170" fill="url(#glowPurple)" />
+    <ellipse cx="600" cy="80" rx="280" ry="90" fill="#3b82f6" opacity="0.18" />
+  </g>
+
+  <!-- Ambient Grid Pattern Overlay -->
+  <g opacity="0.12">
+    <path d="M0,60 H1200 M0,120 H1200 M0,180 H1200 M0,240 H1200 M0,300 H1200 M0,360 H1200" stroke="#94a3b8" stroke-width="0.8" />
+    <path d="M120,0 V420 M240,0 V420 M360,0 V420 M480,0 V420 M600,0 V420 M720,0 V420 M840,0 V420 M960,0 V420 M1080,0 V420" stroke="#94a3b8" stroke-width="0.8" />
+  </g>
+
+  <!-- Animated Data Flow Lines in Background -->
+  <g opacity="0.45">
+    <path class="anim-flow" d="M80,320 C240,240 400,340 600,280 C800,220 980,320 1120,270" fill="none" stroke="#38bdf8" stroke-width="2.5" />
+    <path class="anim-flow" d="M80,100 C280,180 440,120 620,170 C820,220 960,110 1120,160" fill="none" stroke="#a855f7" stroke-width="2" />
+  </g>
+
+  <!-- Subtle Outer Border Frame -->
+  <rect class="border-shimmer" x="8" y="8" width="1184" height="404" rx="12" fill="none" stroke="#38bdf8" stroke-width="1.2" opacity="0.4" />
+
+  <!-- Central Foreground Content Card (Solid high-contrast container) -->
+  <g filter="url(#subtleShadow)">
+    <rect x="70" y="55" width="1060" height="310" rx="16" fill="url(#cardGrad)" stroke="#334155" stroke-width="1" />
+  </g>
+
+  <!-- Top Category Pill / Badge -->
+  <g transform="translate(110, 85)">
+    <rect x="0" y="0" width="410" height="32" rx="16" fill="#0369a1" fill-opacity="0.3" stroke="#0284c7" stroke-width="1" />
+    <circle cx="16" cy="16" r="5" fill="#38bdf8" />
+    <text x="32" y="21" class="banner-badge">⚡ RETRIEVAL-AUGMENTED GENERATION &amp; CONTEXT ENGINES</text>
+  </g>
+
+  <!-- Main Title with Gradient Accent -->
+  <g transform="translate(110, 185)">
+    <text class="banner-title">
+      Awesome <tspan fill="url(#accentGrad)">RAG &amp; Context Engines</tspan>
+    </text>
+  </g>
+
+  <!-- Subtitle Text -->
+  <g transform="translate(110, 235)">
+    <text class="banner-subtitle">
+      A curated ecosystem of enterprise SaaS platforms, open-source context engines &amp; vector search.
+    </text>
+  </g>
+
+  <!-- Feature Pill Tags in Foreground -->
+  <g transform="translate(110, 290)">
+    <!-- Pill 1: Layout-Aware Parsing -->
+    <g transform="translate(0, 0)">
+      <rect x="0" y="0" width="185" height="36" rx="18" fill="#1e293b" stroke="#475569" stroke-width="1" />
+      <circle cx="18" cy="18" r="4" fill="#38bdf8" />
+      <text x="32" y="23" class="tag-text">Layout-Aware OCR</text>
+    </g>
+
+    <!-- Pill 2: Hybrid BM25 + Dense -->
+    <g transform="translate(195, 0)">
+      <rect x="0" y="0" width="195" height="36" rx="18" fill="#1e293b" stroke="#475569" stroke-width="1" />
+      <circle cx="18" cy="18" r="4" fill="#818cf8" />
+      <text x="32" y="23" class="tag-text">Hybrid Dense + BM25</text>
+    </g>
+
+    <!-- Pill 3: Graph RAG -->
+    <g transform="translate(400, 0)">
+      <rect x="0" y="0" width="135" height="36" rx="18" fill="#1e293b" stroke="#475569" stroke-width="1" />
+      <circle cx="18" cy="18" r="4" fill="#c084fc" />
+      <text x="32" y="23" class="tag-text">Graph RAG</text>
+    </g>
+
+    <!-- Pill 4: Curated Artifacts -->
+    <g transform="translate(545, 0)">
+      <rect x="0" y="0" width="170" height="36" rx="18" fill="#1e293b" stroke="#475569" stroke-width="1" />
+      <circle cx="18" cy="18" r="4" fill="#34d399" />
+      <text x="32" y="23" class="tag-text">Curated Artifacts</text>
+    </g>
+
+    <!-- Pill 5: Zero-Hallucination Guardrails -->
+    <g transform="translate(725, 0)">
+      <rect x="0" y="0" width="225" height="36" rx="18" fill="#1e293b" stroke="#475569" stroke-width="1" />
+      <circle cx="18" cy="18" r="4" fill="#fbbf24" />
+      <text x="32" y="23" class="tag-text">Grounded Hallucination Guard</text>
+    </g>
+  </g>
+</svg>
