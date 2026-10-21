@@ -1,6 +1,6 @@
 # Awesome-RAG-Context-Engines
 
-# Top RAG & Context Engines Ecosystem
+## Top RAG & Context Engines Ecosystem
 
 **Curated List of SaaS Products & Open-Source GitHub Projects**  
 *Focused on Deep Document Understanding, Layout-Aware Parsing & Grounded Generation*  
